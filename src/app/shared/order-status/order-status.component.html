@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <h3>Order Status</h3>
+  <!-- Status bar container -->
+  <div class="d-flex flex-row justify-content-evenly align-items-center status-container">
+    <!-- Loop through statuses -->
+    <div *ngFor="let status of statuses; let i = index" 
+         [ngClass]="{
+           'status': true,
+           'active': i <= currentStatusIndex,
+           'pending': status === 'pending',
+           'confirmed': status === 'confirmed',
+           'dispatched': status === 'dispatched',
+           'delivered': status === 'delivered'
+         }" class="d-flex flex-column align-items-center">
+      <div class="circle"></div>
+      <div class="status-text mt-2">{{ status }}</div> <!-- Status text below the circle -->
+    </div>
+    <!-- Status line -->
+    <!-- <div class="status-line"></div> -->
+  </div>
+</div>

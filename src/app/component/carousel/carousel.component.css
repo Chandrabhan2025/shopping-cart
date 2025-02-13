@@ -1,0 +1,12 @@
+.carousel {
+    padding-left: 0;
+    margin-left: 0;
+    width: 100%; /* Ensure the carousel width takes up the full viewport width */
+    height: auto; /* Let the height adjust automatically */
+}
+
+#carouselExampleControls{
+    background-color: aliceblue;
+}
+
+

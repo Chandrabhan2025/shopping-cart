@@ -1,0 +1,7 @@
+<form  >
+    <input type="file" (change)="onFileChange($event)"/>
+    <button type="submit" (click)="onSubmit()">Upload Image</button>
+  </form>
+
+
+  <img [src]="imageUrl" alt="Image" />

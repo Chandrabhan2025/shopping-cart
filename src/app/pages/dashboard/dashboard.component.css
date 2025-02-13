@@ -1,0 +1,35 @@
+/* Ensure the HTML and body elements take up the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Ensure container takes the full height */
+  .container-fluid {
+    height: 100%;
+  }
+  
+  /* Ensure the row takes the full height */
+  .row {
+    height: 100%;
+  }
+  
+  /* Sidebar to take full height */
+  .col-md-3 {
+    height: 100%;
+    position: sticky;
+    top: 0;
+  }
+  
+  /* Optional: Make the list-group fill the height of the sidebar */
+  .list-group {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Optional: Make the sidebar items take equal height */
+  .list-group-item {
+    flex-grow: 1;
+  }
+  

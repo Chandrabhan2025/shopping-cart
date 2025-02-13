@@ -1,0 +1,23 @@
+<div>
+    <div>
+        <app-carousel></app-carousel>
+    </div>
+
+    <div class="border border-2 rounded border-dark text-center mt-2">
+        <h3>Sneakers</h3>
+        <app-product-card [productData]="productData"></app-product-card>
+        <button class="m-2 btn btn-dark" [routerLink]="['product']" >Explore</button>
+    </div>
+
+    <div class="border border-2 rounded border-dark text-center mt-2">
+        <h3>Sports</h3>
+        <app-product-card [productData]="productSports"></app-product-card>
+        <button class="m-2 btn btn-dark" [routerLink]="['product']" >Explore</button>
+    </div>
+
+    <div class="border border-2 rounded border-dark text-center mt-2">
+        <h3>Boots</h3>
+        <app-product-card [productData]="productBoots"></app-product-card>
+        <button class="m-2 btn btn-dark" [routerLink]="['product']" routerLinkActive="router-link-active" >Explore</button>
+    </div>
+</div>

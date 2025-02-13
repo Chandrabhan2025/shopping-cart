@@ -1,0 +1,74 @@
+/* Custom Styles */
+.status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+.status {
+  display: flex;
+  flex-direction: column; /* Circle above text */
+  align-items: center;
+  margin: 20px 0;
+  transition: background-color 0.3s ease;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc; /* Default color for inactive circles */
+}
+
+.status-text {
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* Color styles for active and pending status steps */
+.status.pending.active .circle {
+  background-color: grey;
+}
+
+.status.confirmed.active .circle {
+  background-color: blue;
+}
+
+.status.dispatched.active .circle {
+  background-color: orange;
+}
+
+.status.delivered.active .circle {
+  background-color: green;
+}
+
+/* Default colors for inactive status steps */
+.status.pending .circle {
+  background-color: #ccc;
+}
+
+.status.confirmed .circle {
+  background-color: #ccc;
+}
+
+.status.dispatched .circle {
+  background-color: #ccc;
+}
+
+.status.delivered .circle {
+  background-color: #ccc;
+}
+
+/* Optional: Styling for the line between statuses */
+.status-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #ccc;
+  z-index: -1;
+}

@@ -1,0 +1,127 @@
+<div class="container my-4 border m-2" *ngIf="!selectedProduct">
+  <div class="filter-options d-flex justify-content-between align-items-center">
+    <div class="filter-option">
+      <label for="priceSort">Sort by Price:</label>
+      <select id="priceSort" class="form-select" [(ngModel)]="selectedPriceSort" (ngModelChange)="sortByPrice()">
+        <option value="all">All</option>
+        <option value="asc">Low to High</option>
+        <option value="desc">High to Low</option>
+      </select>
+    </div>
+
+    <div class="filter-option">
+      <label for="categorySort">Sort by Category:</label>
+      <select id="categorySort" class="form-select" [(ngModel)]="selectedCategory" (ngModelChange)="sortByCategory()">
+        <option value="all">All</option>
+        <option *ngFor="let cate of category" [value]="cate">{{cate}}</option>
+      </select>
+    </div>
+
+    <div class="filter-option">
+      <label for="brandSort">Sort by Product Type:</label>
+      <select id="brandSort" class="form-select" [(ngModel)]="selectedProductType" (ngModelChange)="sortByProductType()">
+        <option value="all">All</option>
+        <option *ngFor="let producttype of productType" [value]="producttype">{{producttype}}</option>
+      </select>
+    </div>
+
+    <!-- Clear All Filters Button -->
+    <button class="btn btn-outline-danger mb-4 mt-4" (click)="clearAllFilter()">Clear All Filters</button>
+  </div>
+    <div class="product-list">
+      <div *ngFor="let item of filteredProducts">
+        <div class="row align-items-center product-row">
+          <div class="col-auto">
+
+            <img [src]="item.image[0]" class="img-fluid" alt="Product Image" style="width: 150px; height: 150px;">
+          </div>
+  
+
+          <div class="col">
+            <h5>{{ item.productName }}</h5>
+          </div>
+ 
+          <div class="col-auto">
+            <button class="btn btn-info btn-sm m-2 w-50" (click)="editProduct(item)">Edit</button>
+            <button class="btn btn-danger btn-sm m-2 w-50" (click)="deleteProduct(item.productId)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div *ngIf="selectedProduct">
+  <div class="row m-2" style="width: 1200px;">
+    <div class="col-md-8 mb-4">
+      <div class="card mb-4">
+        <div class="card-header py-3">
+          <h5 class="mb-0 text-center">Update Product</h5>
+        </div>
+        <div class="card-body">
+          <form #productForm="ngForm">
+            
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+              <div class="col">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="text" id="form7Example1" class="form-control" [(ngModel)]="selectedProduct.productName" name="productName"/>
+                  <label class="form-label" for="form7Example1">Product name</label>
+                </div>
+              </div>
+              <div class="col">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="text" id="form7Example2" class="form-control" [(ngModel)]="selectedProduct.productType" name="productType"/>
+                  <label class="form-label" for="form7Example2">Product Type</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="text" id="form7Example1" class="form-control" [(ngModel)]="selectedProduct.category" name="category"/>
+                    <label class="form-label" for="form7Example1">Category</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="text" id="form7Example2" class="form-control" [(ngModel)]="selectedProduct.image[0]" name="image"/>
+                    <label class="form-label" for="form7Example2">Image URL</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-4">
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="number" id="form7Example1" class="form-control" [(ngModel)]="selectedProduct.stock" name="stock"/>
+                    <label class="form-label" for="form7Example1">Stock</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="number" id="form7Example2" class="form-control" [(ngModel)]="selectedProduct.price"  name="price"/>
+                    <label class="form-label" for="form7Example2">Price</label>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                      <div data-mdb-input-init class="form-outline">
+                        <input type="textbox" id="form7Example1" class="form-control" [(ngModel)]="selectedProduct.description" placeholder="Add description" name="description"/>
+                        <!-- <label class="form-label" for="form7Example1">Description</label> -->
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-center align-items-center">
+                <button class="btn btn-primary" [disabled]="!productForm.dirty" (click)="updateProduct()">Update Product</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  

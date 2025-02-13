@@ -1,0 +1,28 @@
+<div class="container-fluid h-100">
+    <div class="row" style="height: 550px;">
+      <!-- Sidebar -->
+      <div class="col-md-3 bg-dark text-white p-3 h-100">
+        <h4>Admin Dashboard</h4>
+        <div class="list-group">
+            <button class="btn btn-dark text-white w-100" (click)="changeAddProduct()">
+                Add Product
+            </button>
+              
+            <button class="btn btn-dark text-white w-100" (click)="changeAddProductList()">
+                All Product
+            </button>
+            <button class="btn btn-dark text-white w-100" (click)="changeGetAllOrders()">
+                All Orders
+            </button>
+        </div>
+      </div>
+  
+      <!-- Main Content -->
+      <div class="col-md-9 p-3">
+        <app-add-products *ngIf="addProduct"></app-add-products>
+        <app-product-list *ngIf="getAllProduct"></app-product-list>
+        <app-order-details *ngIf="getAllOrders"></app-order-details>
+      </div>
+    </div>
+  </div>
+  

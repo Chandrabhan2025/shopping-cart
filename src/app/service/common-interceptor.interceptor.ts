@@ -5,6 +5,10 @@ export const commonInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req);
   }
 
+  if(req.url.includes('/update-user')){
+    return next(req);
+  }
+
   const token = localStorage.getItem("token");
 
   if (token) {

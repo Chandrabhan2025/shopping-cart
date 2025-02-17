@@ -1,16 +1,15 @@
 <section style="background-color: #eee;">
     <div class="container py-5">
       
-  
       <div class="row">
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
               <img src="/images/no_profile.jpg" alt="avatar"
                 class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">Chandrabhan Singh</h5>
-              <p class="text-muted mb-1">Kalyan</p>
-              <p class="text-muted mb-4">Maharashtra</p>
+              <h5 class="my-3">{{userData.fullName}}</h5>
+              <p class="text-muted mb-1">{{userData.username}}</p>
+              <button class="btn btn-primary w-auto">Upload Profile</button>
             </div>
           </div>
           
@@ -23,7 +22,8 @@
                   <p class="mb-0">Full Name</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Chandrabhan Singh</p>
+                  <p *ngIf="!isEditing" class="text-muted mb-0">{{userData.fullName}}</p>
+                  <input *ngIf="isEditing" [(ngModel)]="userData.fullName" class="form-control" />
                 </div>
               </div>
               <hr>
@@ -32,16 +32,18 @@
                   <p class="mb-0">Email</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">exampleexample.com</p>
+                  <p *ngIf="!isEditing" class="text-muted mb-0">{{userData.email}}</p>
+                  <input *ngIf="isEditing" [(ngModel)]="userData.email" class="form-control" />
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Phone</p>
+                  <p class="mb-0">User Name</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">(097) 234-5678</p>
+                  <p *ngIf="!isEditing" class="text-muted mb-0">{{userData.username}}</p>
+                  <input *ngIf="isEditing" [(ngModel)]="userData.username" class="form-control" />
                 </div>
               </div>
               <hr>
@@ -50,21 +52,18 @@
                   <p class="mb-0">Mobile</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">(098) 765-4321</p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Address</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                  <p *ngIf="!isEditing" class="text-muted mb-0">{{userData.phoneNumber}}</p>
+                  <input *ngIf="isEditing" [(ngModel)]="userData.phoneNumber" class="form-control" />
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="row d-flex justify-content-center">
+        <button *ngIf="!isEditing" class="btn btn-primary w-auto" (click)="toggleEdit()">Edit Profie</button>
+        <button *ngIf="isEditing"  class="btn btn-primary w-auto" (click)="updateUser()">Update Profie</button>
       </div>
     </div>
   </section>
